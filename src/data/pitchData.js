@@ -11,6 +11,8 @@ import {
   Code2,
   DatabaseZap,
   Gem,
+  Globe,
+  Handshake,
   Heart,
   Instagram,
   Layers3,
@@ -176,6 +178,48 @@ export const bmcSections = [
       {
         title: "Marketing & Growth",
         description: "Run influencer campaigns, social ads, referral programs to achieve 5% freemium conversion."
+      }
+    ]
+  },
+  {
+    id: "partnerships",
+    eyebrow: "09 / Key Partnerships",
+    title: "Strategic Ecosystem.",
+    line: "Collaborating with global leaders across retail, technology, and the creator economy.",
+    icons: [Handshake, Globe, ShoppingBag],
+    accent: "from-brand-soft via-white to-brand-soft",
+    psychology: "Partnerships are our leverage for global scale.",
+    items: ["Fashion Brands", "Beauty Brands", "Tech Providers", "Social Platforms", "E-commerce", "Creators"],
+    partners: [
+      {
+        title: "Fashion Brands",
+        icon: "👗",
+        description: "Zara, Myntra, H&M, Nykaa Fashion — product catalog integration & affiliate revenue"
+      },
+      {
+        title: "Beauty Brands",
+        icon: "💄",
+        description: "Lakme, MAC, L'Oréal — virtual makeup try-on, skin tone matching, sponsored content"
+      },
+      {
+        title: "Tech Providers",
+        icon: "🤖",
+        description: "Google (ARCore), Apple (ARKit), AWS/GCP — core AR/AI infrastructure"
+      },
+      {
+        title: "Social Platforms",
+        icon: "📱",
+        description: "Instagram, TikTok — marketing channels, social sharing integrations, creator partnerships"
+      },
+      {
+        title: "E-commerce Partners",
+        icon: "🚚",
+        description: "Amazon, Flipkart, Meesho — shopping redirect links, affiliate commission integration"
+      },
+      {
+        title: "Stylists & Creators",
+        icon: "🎓",
+        description: "Fashion influencers, certified stylists for premium consultations and content creation"
       }
     ]
   },
