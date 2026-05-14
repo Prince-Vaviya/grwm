@@ -345,6 +345,27 @@ function ExecutionRoadmap({ section }) {
   );
 }
 
+function PartnershipScene({ section }) {
+  return (
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {section.partners.map((partner, index) => (
+        <GlassCard 
+          key={partner.title}
+          className="relative min-h-[200px] border-brand/10 bg-brand-soft/5 transition-all hover:border-brand/40 hover:bg-brand-soft/10"
+        >
+          <div className="mb-4 flex items-center gap-3">
+            <span className="text-2xl">{partner.icon}</span>
+            <h3 className="text-lg font-black tracking-tight text-brand">{partner.title}</h3>
+          </div>
+          <p className="text-sm leading-relaxed text-mutedInk">
+            {partner.description}
+          </p>
+        </GlassCard>
+      ))}
+    </div>
+  );
+}
+
 export function BMCSection({ section, index }) {
   const renderScene = () => {
     if (section.id === "customers") return <PersonaScene section={section} />;
@@ -356,6 +377,7 @@ export function BMCSection({ section, index }) {
     if (section.id === "activities") return <AnimatedTimeline />;
     if (section.id === "resources") return <ResourceScene section={section} />;
     if (section.id === "key-activities") return <ExecutionRoadmap section={section} />;
+    if (section.id === "partnerships") return <PartnershipScene section={section} />;
     if (section.id === "costs") return <CostScene section={section} />;
     return <ResourceGrid section={section} />;
   };
