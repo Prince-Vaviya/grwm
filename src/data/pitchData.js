@@ -108,18 +108,8 @@ export const bmcSections = [
     items: ["Enterprise Sales", "Platform Integrations", "Co-Branded Marketing", "White-Label Licensing"],
   },
   {
-    id: "revenue",
-    eyebrow: "06 / Growth & Monetization",
-    title: "₹1.83 Cr Revenue Target.",
-    line: "Subscriptions and affiliate commissions scale with our user base.",
-    icons: [CircleDollarSign, BadgeIndianRupee, ChartNoAxesCombined],
-    accent: "from-success via-[#DDEFE5] to-brand-soft",
-    psychology: "The path to profitability is clear.",
-    items: ["Subscriptions", "Affiliates", "In-App Purchases", "Ad Revenue", "Virtual Events", "Data Insights"],
-  },
-  {
     id: "resources",
-    eyebrow: "07 / Key Resources",
+    eyebrow: "06 / Key Resources",
     title: "The SaaS Infrastructure.",
     line: "Our core value is delivered through high-performance VTO SDKs and APIs that integrate seamlessly into any brand's digital ecosystem.",
     icons: [ServerCog, DatabaseZap, Users],
@@ -151,7 +141,7 @@ export const bmcSections = [
   },
   {
     id: "key-activities",
-    eyebrow: "08 / Key Activities",
+    eyebrow: "07 / Key Activities",
     title: "The Execution Roadmap.",
     line: "A multi-disciplinary approach to engineering, growth, and brand acquisition.",
     icons: [Activity, Code2, Rocket],
@@ -183,7 +173,7 @@ export const bmcSections = [
   },
   {
     id: "partnerships",
-    eyebrow: "09 / Key Partnerships",
+    eyebrow: "08 / Key Partnerships",
     title: "Strategic Ecosystem.",
     line: "Collaborating with global leaders across retail, technology, and the creator economy.",
     icons: [Handshake, Globe, ShoppingBag],
