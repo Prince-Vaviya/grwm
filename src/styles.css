@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 30 100% 98%;
+  --foreground: 340 10% 11%;
+  --border: 340 33% 91%;
+  --primary: 353 51% 46%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 344 28% 93%;
+  --muted-foreground: 335 7% 41%;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #fffbf7;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 217, 222, 0.95), transparent 31%),
+    radial-gradient(circle at 85% 20%, rgba(178, 58, 72, 0.12), transparent 28%),
+    #fffbf7;
+  color: #201a1c;
+  font-family: Roboto, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #ffd9de;
+  color: #201a1c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffbf7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b23a48, #ffd9de);
+  border-radius: 999px;
+}
+
+.high-contrast {
+  --border: 340 10% 11%;
+}
+
+.high-contrast * {
+  border-color: #201a1c !important;
+}
+
+.motion-card {
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.motion-card:hover {
+  transform: translateY(-6px) rotateX(1.5deg) rotateY(-1.5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  main {
+    scroll-snap-type: y proximity;
+  }
+}
