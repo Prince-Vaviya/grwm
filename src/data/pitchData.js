@@ -1,4 +1,5 @@
 import {
+  Activity,
   BadgeIndianRupee,
   Bot,
   BrainCircuit,
@@ -7,6 +8,7 @@ import {
   Check,
   CircleDollarSign,
   Cloud,
+  Code2,
   DatabaseZap,
   Gem,
   Heart,
@@ -16,6 +18,7 @@ import {
   Network,
   Palette,
   Radar,
+  Rocket,
   ScanFace,
   ServerCog,
   Share2,
