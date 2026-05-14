@@ -27,10 +27,14 @@ export function AnimatedTimeline() {
                   <Icon className="h-6 w-6 text-brand" />
                   <span className="text-xs font-bold text-mutedInk">0{index + 1}</span>
                 </div>
-                <p className="text-xl font-bold text-ink">{step}</p>
-                <p className="mt-2 text-sm text-mutedInk">Data moves forward, confidence moves with it.</p>
+                <p className="text-xl font-bold text-ink">{step.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-mutedInk">{step.description}</p>
               </div>
-              <ArrowRight className="absolute left-5 top-7 h-5 w-5 text-ink md:left-1/2 md:-translate-x-1/2" />
+              <ArrowRight 
+                className={`absolute left-5 top-7 h-5 w-5 text-ink transition-transform duration-700 md:left-1/2 md:-translate-x-1/2 ${
+                  index % 2 === 0 ? "md:rotate-180" : "rotate-0"
+                }`} 
+              />
             </motion.div>
           );
         })}

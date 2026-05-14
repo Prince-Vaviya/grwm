@@ -39,7 +39,7 @@ function PhoneMock() {
         <p className="text-xs text-mutedInk">AI Fit Score</p>
         <p className="mt-1 text-3xl font-black text-brand">94%</p>
       </GlassCard>
-      <GlassCard className="absolute -left-28 bottom-28 w-44 p-4 animate-float [animation-delay:1.2s]">
+      <GlassCard className="absolute -left-28 bottom-42 w-44 p-4 animate-float [animation-delay:1.2s]">
         <p className="text-xs text-mutedInk">Style Match</p>
         <p className="mt-1 text-3xl font-black text-ink">Neo Luxe</p>
       </GlassCard>
@@ -78,7 +78,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.24 }}
             className="mt-5 max-w-3xl text-3xl font-bold leading-tight text-ink sm:text-4xl xl:text-5xl"
           >
-            Your AI-Powered Virtual Stylist
+            The AI-Powered Virtual Grooming & Styling Platform
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 22 }}
@@ -86,7 +86,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.36 }}
             className="mt-5 max-w-2xl text-lg leading-8 text-mutedInk sm:text-xl"
           >
-            Try outfits, hairstyles and accessories before you buy.
+            Experiment with clothes, hairstyles, and accessories in real-time. Visualize before you buy.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 22 }}
@@ -97,7 +97,10 @@ export function HeroSection() {
             <Button>
               Experience the Future <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="ghost">
+            <Button
+              variant="ghost"
+              onClick={() => window.open("https://youtu.be/Aq5WXmQQooo?si=ei6Zd-qe62Ztk13H", "_blank")}
+            >
               <Play className="mr-2 h-4 w-4" /> See Live Demo
             </Button>
           </motion.div>

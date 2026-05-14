@@ -4,6 +4,7 @@ import { Check, Heart, MessageCircle, Sparkles, ThumbsUp } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { GlassCard } from "./ui/card";
 import { RevenueChart } from "./RevenueChart";
+import { GrowthChart } from "./GrowthChart";
 import { AnimatedTimeline } from "./AnimatedTimeline";
 
 function PersonaScene({ section }) {
@@ -41,36 +42,42 @@ function PersonaScene({ section }) {
 
 function MirrorScene({ section }) {
   return (
-    <GlassCard className="relative min-h-[520px] p-0">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(178,58,72,.15),transparent_35%)]" />
-      <div className="absolute left-1/2 top-9 h-[420px] w-64 -translate-x-1/2 rounded-t-[7rem] border border-brand/25 bg-white/80" />
-      <motion.div
-        className="absolute left-1/2 top-20 h-72 w-40 -translate-x-1/2 rounded-t-[5rem] bg-gradient-to-b from-brand via-brand-soft to-white"
-        animate={{ filter: ["hue-rotate(0deg)", "hue-rotate(45deg)", "hue-rotate(0deg)"] }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-      <div className="absolute inset-x-10 top-20 h-0.5 bg-brand shadow-cyan animate-scan" />
-      <div className="absolute right-8 top-12 space-y-3">
-        {section.items.map((item, index) => (
-          <motion.div
-            key={item}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ delay: index * 0.14 }}
-            className="rounded-lg border border-brand-border bg-white/90 px-4 py-3 text-sm text-ink backdrop-blur-xl"
-          >
-            <Sparkles className="mr-2 inline h-4 w-4 text-brand" />
-            {item}
-          </motion.div>
-        ))}
+    <GlassCard className="relative overflow-hidden p-0">
+      <div className="relative aspect-video w-full bg-ink/90">
+        <video 
+          key="solution-video"
+          src="videos/solution.mp4"
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent pointer-events-none" />
       </div>
-      <div className="absolute bottom-7 left-7 right-7 grid gap-3 sm:grid-cols-3">
-        {section.comparison.map((item) => (
-          <div key={item} className="rounded-xl border border-brand-border bg-brand-soft/45 p-3 text-sm text-mutedInk">
-            {item}
-          </div>
-        ))}
+      <div className="p-8">
+        <div className="flex flex-wrap gap-3">
+          {section.items.map((item, index) => (
+            <motion.div
+              key={item}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="flex items-center gap-2 rounded-full border border-brand-border bg-white/90 px-4 py-2 text-sm font-bold text-ink"
+            >
+              <Sparkles className="h-4 w-4 text-brand" />
+              {item}
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {section.comparison.map((item) => (
+            <div key={item} className="rounded-xl border border-brand-border bg-brand-soft/30 p-4 text-xs font-bold text-mutedInk">
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
     </GlassCard>
   );
@@ -241,25 +248,101 @@ function DefaultScene({ section }) {
   );
 }
 
-export function BMCSection({ section }) {
+function MonetizationScene() {
+  return (
+    <div className="flex w-full flex-col gap-16 lg:gap-24">
+      <RevenueChart />
+      <GrowthChart />
+    </div>
+  );
+}
+
+function SegmentScene({ section }) {
+  const colors = [
+    "bg-brand",
+    "bg-indigo-500",
+    "bg-purple-500",
+    "bg-emerald-500"
+  ];
+
+  return (
+    <div className="grid gap-6 sm:grid-cols-2">
+      {section.personas.map((persona, index) => (
+        <GlassCard
+          key={persona.name}
+          className="group relative flex overflow-hidden p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+        >
+          <div className={`w-3 shrink-0 ${colors[index % colors.length]}`} />
+          <div className="p-8">
+            <div className="mb-3 flex items-center justify-between">
+              <h3 className="text-2xl font-black text-ink">{persona.name}</h3>
+              <span className="rounded-full bg-brand-soft/30 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-brand">
+                {persona.stat}
+              </span>
+            </div>
+            <p className="text-base leading-relaxed text-mutedInk">
+              {persona.note}
+            </p>
+          </div>
+        </GlassCard>
+      ))}
+    </div>
+  );
+}
+
+function ResourceScene({ section }) {
+  return (
+    <div className="grid gap-6 sm:grid-cols-2">
+      {section.resourceCategories.map((cat, index) => (
+        <GlassCard 
+          key={cat.title}
+          className="relative min-h-[220px] border-brand/10 bg-brand-soft/5 transition-all hover:border-brand/40"
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span className="text-2xl">{cat.icon}</span>
+            <h3 className="text-xl font-black tracking-tight text-ink">{cat.title}</h3>
+          </div>
+          <ul className="space-y-4">
+            {cat.points.map((point, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                <span className="text-sm font-medium leading-relaxed text-mutedInk">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </GlassCard>
+      ))}
+    </div>
+  );
+}
+
+export function BMCSection({ section, index }) {
   const renderScene = () => {
     if (section.id === "customers") return <PersonaScene section={section} />;
     if (section.id === "value") return <MirrorScene section={section} />;
-    if (section.id === "channels" || section.id === "partners") return <NetworkScene section={section} />;
+    if (section.id === "segments") return <SegmentScene section={section} />;
+    if (section.id === "marketing" || section.id === "partners") return <NetworkScene section={section} />;
     if (section.id === "relationships") return <SocialScene section={section} />;
-    if (section.id === "revenue") return <RevenueChart />;
+    if (section.id === "revenue") return <MonetizationScene />;
     if (section.id === "activities") return <AnimatedTimeline />;
+    if (section.id === "resources") return <ResourceScene section={section} />;
     if (section.id === "costs") return <CostScene section={section} />;
     return <ResourceGrid section={section} />;
   };
 
   return (
-    <SectionShell id={section.id} eyebrow={section.eyebrow} title={section.title} line={section.line}>
+    <SectionShell 
+      id={section.id} 
+      eyebrow={section.eyebrow} 
+      title={section.title} 
+      line={section.line}
+    >
       <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.7 }}
+        initial={{ opacity: 0, scale: 0.98, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.15 }}
+        transition={{ duration: 0.8 }}
+        className="w-full"
       >
         {renderScene()}
       </motion.div>

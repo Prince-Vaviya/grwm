@@ -45,8 +45,8 @@ export default function App() {
       <CursorMotion activeId={activeId} />
       <Navbar sections={bmcSections} activeId={activeId} progress={progress} />
       <HeroSection />
-      {bmcSections.map((section) => (
-        <BMCSection key={section.id} section={section} />
+      {bmcSections.map((section, index) => (
+        <BMCSection key={section.id} section={section} index={index} />
       ))}
       <CompetitiveMatrix />
       <PricingCards />

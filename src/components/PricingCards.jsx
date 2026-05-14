@@ -7,9 +7,9 @@ import { GlassCard } from "./ui/card";
 
 export function PricingCards() {
   return (
-    <section id="pricing" className="relative flex min-h-screen snap-start items-center px-5 py-24 sm:px-8 lg:px-12">
-      <div className="mx-auto w-full max-w-7xl">
-        <div className="mb-10 max-w-3xl">
+    <section id="pricing" className="relative flex min-h-screen snap-start items-center px-6 py-24 sm:px-10 lg:px-16">
+      <div className="mx-auto w-full max-w-[1400px]">
+        <div className="mb-16 max-w-4xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.34em] text-brand">
             Subscription Pricing
           </p>
@@ -31,7 +31,14 @@ export function PricingCards() {
                 className={`h-full p-6 ${tier.featured ? "border-brand shadow-glow animate-pulseGlow" : ""}`}
               >
                 <div className="mb-8 flex items-center justify-between">
-                  <h3 className="text-2xl font-black text-ink">{tier.name}</h3>
+                  <div>
+                    <h3 className="text-2xl font-black text-ink">{tier.name}</h3>
+                    {tier.featured && (
+                      <span className="mt-1 block text-[10px] font-black uppercase tracking-widest text-brand">
+                        Best Value
+                      </span>
+                    )}
+                  </div>
                   {tier.featured && <Crown className="h-6 w-6 text-brand" />}
                 </div>
                 <p className="text-5xl font-black text-ink">{tier.price}</p>

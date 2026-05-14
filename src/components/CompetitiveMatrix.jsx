@@ -28,8 +28,8 @@ function Cell({ value, highlight }) {
 
 export function CompetitiveMatrix() {
   return (
-    <section id="advantage" className="relative flex min-h-screen snap-start items-center px-5 py-24 sm:px-8 lg:px-12">
-      <div className="mx-auto w-full max-w-7xl">
+    <section id="advantage" className="relative flex min-h-screen snap-start items-center px-6 py-24 sm:px-10 lg:px-16">
+      <div className="mx-auto w-full max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
