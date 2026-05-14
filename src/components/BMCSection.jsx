@@ -316,6 +316,35 @@ function ResourceScene({ section }) {
   );
 }
 
+function ExecutionRoadmap({ section }) {
+  return (
+    <GlassCard className="p-10">
+      <div className="relative space-y-12">
+        <div className="absolute left-[22px] top-4 h-[calc(100%-32px)] w-0.5 border-l-2 border-dashed border-brand/30" />
+        {section.activities.map((activity, index) => (
+          <motion.div 
+            key={activity.title}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="relative flex items-start gap-8"
+          >
+            <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-xl font-black text-white shadow-[0_0_20px_rgba(178,58,72,0.4)]">
+              {index + 1}
+            </div>
+            <div className="pt-1">
+              <h3 className="text-2xl font-black tracking-tight text-ink">{activity.title}</h3>
+              <p className="mt-3 text-lg leading-relaxed text-mutedInk max-w-2xl">
+                {activity.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </GlassCard>
+  );
+}
+
 export function BMCSection({ section, index }) {
   const renderScene = () => {
     if (section.id === "customers") return <PersonaScene section={section} />;
@@ -326,6 +355,7 @@ export function BMCSection({ section, index }) {
     if (section.id === "revenue") return <MonetizationScene />;
     if (section.id === "activities") return <AnimatedTimeline />;
     if (section.id === "resources") return <ResourceScene section={section} />;
+    if (section.id === "key-activities") return <ExecutionRoadmap section={section} />;
     if (section.id === "costs") return <CostScene section={section} />;
     return <ResourceGrid section={section} />;
   };
