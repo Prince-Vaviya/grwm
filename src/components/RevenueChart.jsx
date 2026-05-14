@@ -32,7 +32,7 @@ export function RevenueChart() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="mt-3 text-7xl font-black tracking-tighter text-ink"
           >
-            ₹1.83<span className="text-3xl text-mutedInk">Cr</span>
+            ₹1.83 <span className="text-3xl text-mutedInk">Cr</span>
           </motion.p>
         </div>
         <motion.div 

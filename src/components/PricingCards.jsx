@@ -4,6 +4,8 @@ import { Check, Crown } from "lucide-react";
 import { pricing } from "../data/pitchData";
 import { Button } from "./ui/button";
 import { GlassCard } from "./ui/card";
+import { RevenueChart } from "./RevenueChart";
+import { GrowthChart } from "./GrowthChart";
 
 export function PricingCards() {
   return (
@@ -58,6 +60,10 @@ export function PricingCards() {
               </GlassCard>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-20">
+          <RevenueChart />
+          <GrowthChart />
         </div>
       </div>
     </section>
