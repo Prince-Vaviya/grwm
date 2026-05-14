@@ -1,10 +1,21 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BadgeIndianRupee, TrendingUp } from "lucide-react";
 import { revenueStreams } from "../data/pitchData";
 import { GlassCard } from "./ui/card";
 
 export function RevenueChart() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const formatActualValue = (percent) => {
+    const totalCr = 1.83;
+    const valueCr = (percent / 100) * totalCr;
+    if (valueCr < 1) {
+      return `₹${(valueCr * 100).toFixed(2)} L`;
+    }
+    return `₹${valueCr.toFixed(2)} Cr`;
+  };
+
   return (
     <GlassCard className="min-h-[520px] p-6">
       <div className="mb-8 flex items-start justify-between gap-6">
@@ -21,7 +32,25 @@ export function RevenueChart() {
           <div key={stream.label}>
             <div className="mb-2 flex justify-between text-sm text-mutedInk">
               <span>{stream.label}</span>
-              <span>{stream.value}%</span>
+              <motion.span
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="cursor-help font-bold text-ink"
+                initial={false}
+                animate={{ scale: hoveredIndex === index ? 1.05 : 1 }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={hoveredIndex === index ? "value" : "percent"}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {hoveredIndex === index ? formatActualValue(stream.value) : `${stream.value}%`}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.span>
             </div>
             <div
               className="h-5 overflow-hidden rounded-full"
